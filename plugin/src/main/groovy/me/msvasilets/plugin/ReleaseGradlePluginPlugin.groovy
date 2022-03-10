@@ -10,6 +10,7 @@ import org.gradle.api.Plugin
  * A simple 'hello world' plugin.
  */
 class ReleaseGradlePluginPlugin implements Plugin<Project> {
+
     void apply(Project project) {
         // Register a task
         project.tasks.register("greeting") {
@@ -18,4 +19,5 @@ class ReleaseGradlePluginPlugin implements Plugin<Project> {
             }
         }
     }
+
 }

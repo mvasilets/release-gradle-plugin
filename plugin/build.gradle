@@ -12,7 +12,14 @@ plugins {
 
     // Apply the Groovy plugin to add support for Groovy
     id 'groovy'
+
+    // Плагин для публикации проекта в репозиторий
+    id 'maven-publish'
+
+    id 'me.msvasilets.plugin.greeting' version '1.0'
 }
+
+version '1.0'
 
 repositories {
     // Use Maven Central for resolving dependencies.
@@ -60,3 +67,30 @@ tasks.named('test') {
     // Use JUnit Jupiter for unit tests.
     useJUnitPlatform()
 }
+
+// abstract class CustomTask extends DefaultTask {
+//
+//    @Input
+//    String message;
+//
+//    @OutputFile
+//    abstract RegularFileProperty getDestination()
+//
+//    @TaskAction
+//    def greet() {
+//        println message
+//        def file = destination.get().asFile
+//        file.parentFile.mkdirs()
+//        file.write message
+//    }
+//
+//}
+//
+//def greetingFile = objects.fileProperty()
+//
+//tasks.register('greeting', CustomTask) {
+//    message = 'Custom greeting'
+//    destination = greetingFile
+//}
+//
+//greetingFile.set(layout.buildDirectory.file('build.txt'))
