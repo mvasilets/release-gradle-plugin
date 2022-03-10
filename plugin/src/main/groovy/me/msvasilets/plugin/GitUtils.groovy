@@ -19,4 +19,8 @@ class GitUtils {
         return ("git status").execute().text
     }
 
+    public static def getCurrentBranch() {
+        return ("git branch --show-current").execute().text
+    }
+
 }
