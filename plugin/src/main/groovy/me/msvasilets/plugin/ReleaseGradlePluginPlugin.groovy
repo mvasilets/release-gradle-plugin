@@ -6,6 +6,7 @@ package me.msvasilets.plugin
 import me.msvasilets.plugin.tasks.CheckGitStatus
 import me.msvasilets.plugin.tasks.CreateMajorRelease
 import me.msvasilets.plugin.tasks.CreateMinorRelease
+import me.msvasilets.plugin.tasks.ReleaseTask
 import org.gradle.api.Project
 import org.gradle.api.Plugin
 
@@ -29,6 +30,17 @@ class ReleaseGradlePluginPlugin implements Plugin<Project> {
             dependsOn("checkGitStatus")
             setGroup("release")
         }
+//
+//        project.tasks.register("release", ReleaseTask) {
+//            setGroup("release")
+//            doFirst {
+//                if (GitUtils.currentBranch == 'master') {
+//                    dependsOn('createMajorRelease')
+//                } else {
+//                    dependsOn('createMinorRelease')
+//                }
+//            }
+//        }
     }
 
 }

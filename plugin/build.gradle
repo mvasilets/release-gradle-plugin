@@ -68,29 +68,13 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-// abstract class CustomTask extends DefaultTask {
-//
-//    @Input
-//    String message;
-//
-//    @OutputFile
-//    abstract RegularFileProperty getDestination()
-//
-//    @TaskAction
-//    def greet() {
-//        println message
-//        def file = destination.get().asFile
-//        file.parentFile.mkdirs()
-//        file.write message
-//    }
-//
-//}
-//
-//def greetingFile = objects.fileProperty()
-//
-//tasks.register('greeting', CustomTask) {
-//    message = 'Custom greeting'
-//    destination = greetingFile
-//}
-//
-//greetingFile.set(layout.buildDirectory.file('build.txt'))
+ abstract class CustomTask extends DefaultTask {
+
+    @TaskAction
+    def greet() {
+        println 'greeting'
+    }
+
+}
+
+tasks.register('greeting', CustomTask)

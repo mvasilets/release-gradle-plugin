@@ -7,7 +7,7 @@ import org.gradle.api.tasks.TaskAction
 class CreateMajorRelease extends DefaultTask{
 
     @TaskAction
-    def createMinorRelease() {
+    def createMajorRelease() {
 
         def tags = GitUtils.getGitTagsResult
         println(tags)

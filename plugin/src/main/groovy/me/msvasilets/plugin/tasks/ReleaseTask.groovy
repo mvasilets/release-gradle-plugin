@@ -10,13 +10,9 @@ class ReleaseTask extends DefaultTask {
     def release() {
 
         if (GitUtils.currentBranch == 'master') {
-            doLast {
-                getProject().tasks.getByName('createMajorRelease')
-            }
+            new CreateMajorRelease().createMajorRelease()
         } else {
-            doLast {
-                getProject().tasks.getByName('createMinorRelease')
-            }
+            new CreateMinorRelease().createMinorRelease()
         }
 
     }
