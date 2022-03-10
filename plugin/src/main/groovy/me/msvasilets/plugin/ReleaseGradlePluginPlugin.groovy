@@ -3,6 +3,7 @@
  */
 package me.msvasilets.plugin
 
+import me.msvasilets.plugin.tasks.CreateMinorRelease
 import org.gradle.api.Project
 import org.gradle.api.Plugin
 
@@ -18,6 +19,8 @@ class ReleaseGradlePluginPlugin implements Plugin<Project> {
                 println("Hello from plugin 'me.msvasilets.plugin.greeting'")
             }
         }
+
+        project.tasks.register("printGitTags", CreateMinorRelease)
     }
 
 }
