@@ -3,6 +3,7 @@
  */
 package me.msvasilets.plugin
 
+import me.msvasilets.plugin.tasks.CheckGitStatus
 import me.msvasilets.plugin.tasks.CreateMinorRelease
 import org.gradle.api.Project
 import org.gradle.api.Plugin
@@ -13,14 +14,15 @@ import org.gradle.api.Plugin
 class ReleaseGradlePluginPlugin implements Plugin<Project> {
 
     void apply(Project project) {
-        // Register a task
-        project.tasks.register("greeting") {
-            doLast {
-                println("Hello from plugin 'me.msvasilets.plugin.greeting'")
-            }
+
+        project.tasks.register("checkGitStatus", CheckGitStatus) {
+            setGroup("release")
         }
 
-        project.tasks.register("printGitTags", CreateMinorRelease)
+        project.tasks.register("printGitTags", CreateMinorRelease) {
+            dependsOn("checkGitStatus")
+            setGroup("release")
+        }
     }
 
 }

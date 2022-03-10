@@ -15,4 +15,8 @@ class GitUtils {
 
     }
 
+    public static def getGitStatusResult() {
+        return ("git status").execute().text
+    }
+
 }
